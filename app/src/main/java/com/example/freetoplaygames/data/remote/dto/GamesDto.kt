@@ -13,7 +13,7 @@ data class GamesDto(
     @SerializedName("genre")
     val genre: String,
     @SerializedName("id")
-    val id: Int?,
+    val id: Int,
     @SerializedName("platform")
     val platform: String,
     @SerializedName("publisher")

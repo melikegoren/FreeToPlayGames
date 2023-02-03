@@ -15,7 +15,7 @@ data class GameDetailDto(
     @SerializedName("genre")
     val genre: String,
     @SerializedName("id")
-    val id: Int?,
+    val id: Int,
     @SerializedName("minimum_system_requirements")
     val minimum_system_requirements: MinimumSystemRequirements,
     @SerializedName("platform")

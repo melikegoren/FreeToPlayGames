@@ -25,7 +25,7 @@ class GamesRepositoryImpl @Inject constructor(
         }
 
 
-    override suspend fun getGameById(id: Int): Resource<List<GameDetail>> =
+    override suspend fun getGameById(id: Int): Resource<GameDetail> =
         withContext(ioDispatcher){
             try {
                 remoteDataSource.getGameById(id)

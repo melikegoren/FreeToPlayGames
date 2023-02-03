@@ -2,7 +2,7 @@ package com.example.freetoplaygames.data.source
 
 import com.example.freetoplaygames.common.Resource
 import com.example.freetoplaygames.data.remote.FreeToPlayGamesApi
-import com.example.freetoplaygames.data.remote.dto.GamesDto
+import com.example.freetoplaygames.data.remote.dto.GameDetailDto
 import com.example.freetoplaygames.data.remote.dto.toGameDetail
 import com.example.freetoplaygames.data.remote.dto.toGames
 import com.example.freetoplaygames.domain.model.GameDetail
@@ -21,10 +21,10 @@ class RemoteDataSourceImpl @Inject constructor(
             Resource.Error(e.message)
         }
 
-    override suspend fun getGameById(id: Int): Resource<List<GameDetail>> =
+    override suspend fun getGameById(id: Int): Resource<GameDetail> =
         try {
-            val game = api.getGame(id).map { it.toGameDetail() }
-            Resource.Success(game)
+            val game = api.getGame(id).toGameDetail()
+            Resource.Success(api.getGame(id).toGameDetail())
 
         }catch (e: Exception){
             Resource.Error(e.message)

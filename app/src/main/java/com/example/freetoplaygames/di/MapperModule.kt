@@ -2,6 +2,7 @@ package com.example.freetoplaygames.di
 
 import com.example.freetoplaygames.domain.mapper.GameDetailMapper
 import com.example.freetoplaygames.domain.mapper.GameListMapper
+import com.example.freetoplaygames.domain.mapper.GameMapper
 import com.example.freetoplaygames.domain.model.GameDetail
 import com.example.freetoplaygames.domain.model.Games
 import com.example.freetoplaygames.presentation.detail.GameDetailUiData
@@ -25,5 +26,5 @@ abstract class MapperModule {
 
     @Binds
     @ViewModelScoped
-    abstract fun bindGameDetailMapper(gameDetailUiMapperImpl: GameDetailUiMapperImpl): GameListMapper<GameDetail, GameDetailUiData>
+    abstract fun bindGameDetailMapper(gameDetailUiMapperImpl: GameDetailUiMapperImpl): GameDetailMapper<GameDetail, GameDetailUiData>
 }

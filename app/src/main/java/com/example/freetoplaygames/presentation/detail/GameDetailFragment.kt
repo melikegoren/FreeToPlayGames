@@ -13,6 +13,7 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.freetoplaygames.R
 import com.example.freetoplaygames.databinding.FragmentGameDetailBinding
+import com.example.freetoplaygames.presentation.home.GameViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -22,49 +23,57 @@ class GameDetailFragment : Fragment() {
    private var _binding: FragmentGameDetailBinding? = null
     val binding: FragmentGameDetailBinding get() = _binding!!
 
-    private var gameId: Int? = null
+
 
     private val args: GameDetailFragmentArgs by navArgs()
 
     private val viewModel: GameDetailViewModel by viewModels()
+    private val viewModel2: GameViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //gameId = arguments.getInt()
+        Log.d("keyyy", args.gameId.toString())
 
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
 
 
         _binding = FragmentGameDetailBinding.inflate(layoutInflater)
-
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        viewModel.getGameById(args.gameId)
+
         bindViewModel()
+
     }
+
 
     private fun bindViewModel(){
 
-
         viewModel.gameDetailUiState.observe(viewLifecycleOwner){
+
             when(it){
                 is DetailUiState.Error -> {
-                    Toast.makeText(requireContext(), getString(it.message), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), getString(R.string.error), Toast.LENGTH_SHORT).show()
                 }
                 is DetailUiState.Loading -> {
                     Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
 
                 }
                 is DetailUiState.Success -> {
+                    Toast.makeText(requireContext(), "Success oluyo", Toast.LENGTH_SHORT).show()
+                    loadData(it.data)
+
 
                 }
             }
@@ -76,7 +85,7 @@ class GameDetailFragment : Fragment() {
 
 
 
-    private fun loadData(gameDetailUiData: GameDetailUiData){
+     fun loadData(gameDetailUiData: GameDetailUiData){
         binding.apply {
             title.text = gameDetailUiData.title
             shortDescription.text = gameDetailUiData.shortDescription

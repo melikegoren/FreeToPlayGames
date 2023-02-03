@@ -38,7 +38,7 @@ class GameViewModel @Inject constructor(
                         _gamesUiState.postValue(HomeUiState.Loading)
                     }
                     is Resource.Success -> {
-                        _gamesUiState.postValue(HomeUiState.Success(gamesMapper.map(it.result)))
+                        _gamesUiState.postValue(HomeUiState.Success(gamesMapper.map(it.result!!)))
                     }
 
                 }
@@ -46,6 +46,8 @@ class GameViewModel @Inject constructor(
 
         }
     }
+
+    
 
 
 
