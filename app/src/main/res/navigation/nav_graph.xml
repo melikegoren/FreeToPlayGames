@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/gamesFragment">
+    app:startDestination="@id/splashScreen">
 
     <fragment
         android:id="@+id/gamesFragment"
@@ -12,7 +12,8 @@
         tools:layout="@layout/fragment_game" >
         <action
             android:id="@+id/action_gamesFragment_to_gameDetailFragment"
-            app:destination="@id/gameDetailFragment" />
+            app:destination="@id/gameDetailFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"/>
 
     </fragment>
     <fragment
