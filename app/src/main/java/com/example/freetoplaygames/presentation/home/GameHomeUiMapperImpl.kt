@@ -7,7 +7,7 @@ import javax.inject.Inject
 class GameHomeUiMapperImpl @Inject constructor(): GameListMapper<Games, GameHomeUiData> {
     override fun map(input: List<Games>?): List<GameHomeUiData> {
         return input?.map {
-            GameHomeUiData(it.title, it.thumbnail)
+            GameHomeUiData(it.id, it.title, it.thumbnail)
         }!!
     }
 

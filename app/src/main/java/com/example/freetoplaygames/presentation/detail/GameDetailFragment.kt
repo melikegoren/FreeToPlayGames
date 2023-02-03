@@ -1,16 +1,20 @@
 package com.example.freetoplaygames.presentation.detail
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.freetoplaygames.R
 import com.example.freetoplaygames.databinding.FragmentGameDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class GameDetailFragment : Fragment() {
@@ -19,6 +23,8 @@ class GameDetailFragment : Fragment() {
     val binding: FragmentGameDetailBinding get() = _binding!!
 
     private var gameId: Int? = null
+
+    private val args: GameDetailFragmentArgs by navArgs()
 
     private val viewModel: GameDetailViewModel by viewModels()
 
@@ -33,7 +39,11 @@ class GameDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
+
+
         _binding = FragmentGameDetailBinding.inflate(layoutInflater)
+
+
         return binding.root
     }
 
@@ -43,6 +53,7 @@ class GameDetailFragment : Fragment() {
     }
 
     private fun bindViewModel(){
+
 
         viewModel.gameDetailUiState.observe(viewLifecycleOwner){
             when(it){
@@ -60,7 +71,10 @@ class GameDetailFragment : Fragment() {
         }
 
 
+
     }
+
+
 
     private fun loadData(gameDetailUiData: GameDetailUiData){
         binding.apply {

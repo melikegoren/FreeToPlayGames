@@ -1,6 +1,7 @@
 package com.example.freetoplaygames.presentation.home
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -69,7 +70,11 @@ class GameAdapter (private val gameList: ArrayList<GameHomeUiData>, private val 
             Glide.with(this.thumbnail).load(game.thumbnail).into(this.thumbnail)
 
             gamesCardView.setOnClickListener {
-                onHomeClickListener.onCardViewClick(game)
+                Log.d("gameIdd", game.id.toString())
+                game.id?.let { it1 -> onHomeClickListener.onCardViewClick(it1)
+
+                }
+
             }
 
 

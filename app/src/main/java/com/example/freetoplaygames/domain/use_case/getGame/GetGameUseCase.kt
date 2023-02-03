@@ -5,5 +5,5 @@ import com.example.freetoplaygames.domain.model.GameDetail
 import kotlinx.coroutines.flow.Flow
 
 interface GetGameUseCase {
-    operator fun invoke(id: Int): Flow<Resource<GameDetail>>
+    operator fun invoke(id: Int): Flow<Resource<List<GameDetail>>>
 }

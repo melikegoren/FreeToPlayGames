@@ -15,5 +15,5 @@ interface FreeToPlayGamesApi {
     suspend fun getGamesInSearch(@Query("name") name: String): List<GamesDto>
 
     @GET("game")
-    suspend fun getGame(@Path("id") id: Int): GameDetailDto
+    suspend fun getGame(@Path("id") id: Int): List<GameDetailDto>
 }

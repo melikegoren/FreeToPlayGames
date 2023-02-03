@@ -13,11 +13,11 @@ import javax.inject.Inject
 class GetGameUseCaseImpl @Inject constructor(
     private val repository: GamesRepository
 ): GetGameUseCase {
-    override fun invoke(id: Int): Flow<Resource<GameDetail>> = flow {
+    override fun invoke(id: Int): Flow<Resource<List<GameDetail>>> = flow {
         try {
             emit(Resource.Loading)
-            val game = repository.getGameById(id)
-            emit(game)
+            //val game = repository.getGameById(id)
+            emit(repository.getGameById(id))
 
         }catch (e: HttpException){
             emit(Resource.Error(e.localizedMessage ?: "An unexpected error occured."))

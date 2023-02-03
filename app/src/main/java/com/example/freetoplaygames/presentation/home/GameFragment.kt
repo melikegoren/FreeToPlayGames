@@ -14,6 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.freetoplaygames.R
 import com.example.freetoplaygames.common.Resource
+import androidx.navigation.ui.navigateUp
 import com.example.freetoplaygames.databinding.FragmentGameBinding
 import dagger.hilt.android.AndroidEntryPoint
 import com.example.freetoplaygames.presentation.home.GameFragment
@@ -53,6 +54,7 @@ class GameFragment : Fragment(), OnHomeClickListener {
 
         bindViewModel()
         searhView()
+
 
 
 
@@ -105,10 +107,10 @@ class GameFragment : Fragment(), OnHomeClickListener {
 
 
 
-    override fun onCardViewClick(gameHomeUiData: GameHomeUiData) {
-        val navigate = findNavController()
-        navigate.navigate(R.id.action_gamesFragment_to_gameDetailFragment)
-
+    override fun onCardViewClick(id: Int) {
+        val action = GameFragmentDirections.actionGamesFragmentToGameDetailFragment()
+        action.gameId = id
+        findNavController().navigate(action)
     }
 
 
@@ -121,6 +123,6 @@ class GameFragment : Fragment(), OnHomeClickListener {
 
 }
 interface OnHomeClickListener{
-    fun onCardViewClick(gameHomeUiData: GameHomeUiData)
+    fun onCardViewClick(id: Int)
 }
 
