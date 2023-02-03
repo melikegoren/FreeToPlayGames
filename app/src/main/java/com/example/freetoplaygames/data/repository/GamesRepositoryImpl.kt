@@ -26,11 +26,14 @@ class GamesRepositoryImpl @Inject constructor(
 
 
     override suspend fun getGameById(id: Int): Resource<GameDetail> =
-        try {
-            remoteDataSource.getGameById(id)
-        } catch (e: Exception){
-            Resource.Error(e.message.toString())
+        withContext(ioDispatcher){
+            try {
+                remoteDataSource.getGameById(id)
+            } catch (e: Exception){
+                Resource.Error(e.message.toString())
+            }
         }
+
 
     override suspend fun getGamesInSearch(name: String): Resource<List<Games>> =
         withContext(ioDispatcher){

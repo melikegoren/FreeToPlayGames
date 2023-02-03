@@ -2,6 +2,8 @@ package com.example.freetoplaygames.di
 
 import com.example.freetoplaygames.domain.use_case.GetGamesInSearch.GetGamesInSearchUseCase
 import com.example.freetoplaygames.domain.use_case.GetGamesInSearch.GetGamesInSearchUseCaseImpl
+import com.example.freetoplaygames.domain.use_case.getGame.GetGameUseCase
+import com.example.freetoplaygames.domain.use_case.getGame.GetGameUseCaseImpl
 import com.example.freetoplaygames.domain.use_case.getGames.GetAllGamesUseCase
 import com.example.freetoplaygames.domain.use_case.getGames.GetAllGamesUseCaseImpl
 import dagger.Binds
@@ -20,5 +22,5 @@ abstract class UseCaseModule {
 
     @Binds
     @ViewModelScoped
-    abstract fun bindGetGamesInSearch(getGamesInSearchUseCaseImpl: GetGamesInSearchUseCaseImpl): GetGamesInSearchUseCase
+    abstract fun bindGetGameUseCase(getGameUseCaseImpl: GetGameUseCaseImpl): GetGameUseCase
 }

@@ -26,8 +26,8 @@ data class GameDetailDto(
     val release_date: String,
     @SerializedName("screenshots")
     val screenshots: List<Screenshot>,
-    @SerializedName("developer")
-    val short_description: String,
+    @SerializedName("short_description")
+    val shortDescription: String,
     @SerializedName("status")
     val status: String,
     @SerializedName("thumbnail")
@@ -42,6 +42,7 @@ fun GameDetailDto.toGameDetail(): GameDetail {
         title = title,
         thumbnail = thumbnail,
         genre = genre,
+        shortDescription = shortDescription,
         platform = platform,
         developer = developer,
         publisher = publisher

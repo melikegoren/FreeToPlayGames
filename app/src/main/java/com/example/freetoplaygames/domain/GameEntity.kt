@@ -1,11 +1,12 @@
-package com.example.freetoplaygames.presentation.detail
+package com.example.freetoplaygames.domain
 
-data class GameDetailUiData (
+data class GameEntity(
+    val id: String,
     val title: String,
     val thumbnail: String,
-    val genre: String,
     val shortDescription: String,
+    val genre: String,
     val platform: String,
     val developer: String,
-    val publisher: String,
+    val publisher: String
 )

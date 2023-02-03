@@ -20,7 +20,6 @@ import javax.inject.Inject
 @HiltViewModel
 class GameViewModel @Inject constructor(
     private val getAllGamesUseCase: GetAllGamesUseCase,
-    private val getGamesInSearchUseCase: GetGamesInSearchUseCase,
     private val gamesMapper:GameListMapper<Games, GameHomeUiData>
 ) : ViewModel() {
 
@@ -52,26 +51,6 @@ class GameViewModel @Inject constructor(
         }
     }
 
-    fun getGamesInSearch(name: String){
-        viewModelScope.launch {
-            getGamesInSearchUseCase.invoke(name).collect{
-                when(it){
-                    is Resource.Error -> {
-                        _gamesUiState.postValue(HomeUiState.Error(R.string.error))
-
-                    }
-                    is Resource.Loading -> {
-                        _gamesUiState.postValue(HomeUiState.Loading)
-                    }
-                    is Resource.Success -> {
-                        _gamesUiState.postValue(HomeUiState.Success(gamesMapper.map(it.result)))
-                    }
-
-                }
-            }
-
-        }
-    }
 
 
 }
