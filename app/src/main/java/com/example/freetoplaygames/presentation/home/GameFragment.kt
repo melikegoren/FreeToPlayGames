@@ -70,7 +70,7 @@ class GameFragment : Fragment(), OnHomeClickListener {
 
                 }
                 HomeUiState.Loading -> {
-                    Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
+                    whenLoading()
 
                 }
                 is HomeUiState.Success -> {
@@ -98,12 +98,12 @@ class GameFragment : Fragment(), OnHomeClickListener {
         })
     }
 
+    private fun whenLoading(){
+        binding.apply {
+            recyclerView.adapter = null
+        }
 
-
-
-
-
-
+    }
 
 
 
@@ -113,13 +113,6 @@ class GameFragment : Fragment(), OnHomeClickListener {
         findNavController().navigate(action)
     }
 
-
-
-
-    companion object {
-        private const val MINIMUM_SEARCH_LENGTH = 1
-        private const val SEARCH_DEBOUNCE_TIME_IN_MILLISECONDS = 300L
-    }
 
 }
 interface OnHomeClickListener{

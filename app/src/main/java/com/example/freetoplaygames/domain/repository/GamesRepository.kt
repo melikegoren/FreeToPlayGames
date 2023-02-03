@@ -12,5 +12,4 @@ interface GamesRepository {
 
     suspend fun getGameById(id: String): Resource<GameDetail>
 
-    suspend fun getGamesInSearch(name: String): Resource<List<Games>>
 }

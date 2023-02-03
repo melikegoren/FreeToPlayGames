@@ -9,5 +9,5 @@ import retrofit2.http.Query
 interface RemoteDataSource {
     suspend fun getGames(): Resource<List<Games>>
     suspend fun getGameById(id: String): Resource<GameDetail>
-    suspend fun getGamesInSearch(name: String): Resource<List<Games>>
+
 }

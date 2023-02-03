@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.compose.ui.text.toUpperCase
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
@@ -28,13 +29,11 @@ class GameDetailFragment : Fragment() {
     private val args: GameDetailFragmentArgs by navArgs()
 
     private val viewModel: GameDetailViewModel by viewModels()
-    private val viewModel2: GameViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //gameId = arguments.getInt()
-        Log.d("keyyy", args.gameId.toString())
+
 
     }
 
@@ -51,8 +50,8 @@ class GameDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initView()
-        bindViewModel()
+
+        getGameInfo()
 
     }
 
@@ -64,14 +63,15 @@ class GameDetailFragment : Fragment() {
             when(it){
                 is DetailUiState.Error -> {
                     Toast.makeText(requireContext(), getString(R.string.error), Toast.LENGTH_SHORT).show()
+
                 }
                 is DetailUiState.Loading -> {
-                    Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
+                    whenLoading()
+
 
                 }
                 is DetailUiState.Success -> {
-                    Toast.makeText(requireContext(), "Success oluyo", Toast.LENGTH_SHORT).show()
-                    loadData(it.data)
+                    uploadData(it.data)
 
 
                 }
@@ -82,7 +82,7 @@ class GameDetailFragment : Fragment() {
 
     }
 
-    private fun initView(){
+    private fun getGameInfo(){
         val id = args.gameId.toString()
         bindViewModel()
         viewModel.getGameById(id)
@@ -91,18 +91,35 @@ class GameDetailFragment : Fragment() {
 
 
 
-     fun loadData(gameDetailUiData: GameDetailUiData){
+     private fun uploadData(gameDetailUiData: GameDetailUiData){
         binding.apply {
-            title.text = gameDetailUiData.title
+            title.text = gameDetailUiData.title.uppercase()
             shortDescription.text = gameDetailUiData.shortDescription
-            genre.text = gameDetailUiData.genre
-            platform.text = gameDetailUiData.platform
-            developer.text = gameDetailUiData.developer
-            publisher.text = gameDetailUiData.publisher
+            genre.text = "Genre: "+gameDetailUiData.genre
+            platform.text = "Platform: "+gameDetailUiData.platform
+            developer.text = "Developer: "+gameDetailUiData.developer
+            publisher.text = "Publisher: "+gameDetailUiData.publisher
             Glide.with(this.image).load(gameDetailUiData.thumbnail).into(this.image)
 
         }
 
+    }
+
+    fun whenLoading(){
+        binding.apply {
+            title.text = null
+            shortDescription.text = null
+            genre.text = null
+            platform.text = null
+            developer.text = null
+            publisher.text = null
+        }
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
 

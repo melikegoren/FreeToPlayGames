@@ -1,7 +1,5 @@
 package com.example.freetoplaygames.di
 
-import com.example.freetoplaygames.domain.use_case.GetGamesInSearch.GetGamesInSearchUseCase
-import com.example.freetoplaygames.domain.use_case.GetGamesInSearch.GetGamesInSearchUseCaseImpl
 import com.example.freetoplaygames.domain.use_case.getGame.GetGameUseCase
 import com.example.freetoplaygames.domain.use_case.getGame.GetGameUseCaseImpl
 import com.example.freetoplaygames.domain.use_case.getGames.GetAllGamesUseCase

@@ -71,7 +71,7 @@ class GameAdapter (private val gameList: ArrayList<GameHomeUiData>, private val 
 
             gamesCardView.setOnClickListener {
                 Log.d("gameIdd", game.id.toString())
-                game.id?.let { it1 -> onHomeClickListener.onCardViewClick(it1)
+                game.id.let { it1 -> onHomeClickListener.onCardViewClick(it1)
 
                 }
 

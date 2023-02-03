@@ -30,13 +30,7 @@ class RemoteDataSourceImpl @Inject constructor(
             Resource.Error(e.message)
         }
 
-    override suspend fun getGamesInSearch(name: String): Resource<List<Games>> =
-        try {
-            val gameForSearch = api.getGamesInSearch(name).map { it.toGames() }
-            Resource.Success(gameForSearch)
-        } catch (e: Exception){
-            Resource.Error(e.message)
-        }
+
 
 
 }
