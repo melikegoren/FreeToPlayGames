@@ -7,20 +7,25 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import com.bumptech.glide.Glide
 import com.example.freetoplaygames.R
 import com.example.freetoplaygames.databinding.FragmentGameDetailBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class GameDetailFragment : Fragment() {
 
-   /** private var _binding: FragmentGameDetailBinding? = null
+   private var _binding: FragmentGameDetailBinding? = null
     val binding: FragmentGameDetailBinding get() = _binding!!
+
+    private var gameId: Int? = null
 
     private val viewModel: GameDetailViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //gameId = arguments.getInt()
 
     }
 
@@ -30,6 +35,11 @@ class GameDetailFragment : Fragment() {
     ): View? {
         _binding = FragmentGameDetailBinding.inflate(layoutInflater)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        bindViewModel()
     }
 
     private fun bindViewModel(){
@@ -52,9 +62,20 @@ class GameDetailFragment : Fragment() {
 
     }
 
-    private fun loadData(){
-        binding.
+    private fun loadData(gameDetailUiData: GameDetailUiData){
+        binding.apply {
+            title.text = gameDetailUiData.title
+            shortDescription.text = gameDetailUiData.shortDescription
+            genre.text = gameDetailUiData.genre
+            platform.text = gameDetailUiData.platform
+            developer.text = gameDetailUiData.developer
+            publisher.text = gameDetailUiData.publisher
+            Glide.with(this.image).load(gameDetailUiData.thumbnail).into(this.image)
+
+        }
 
     }
-    **/
+
+
+
 }

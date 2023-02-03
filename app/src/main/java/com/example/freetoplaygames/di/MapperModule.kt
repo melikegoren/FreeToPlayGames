@@ -5,7 +5,7 @@ import com.example.freetoplaygames.domain.mapper.GameListMapper
 import com.example.freetoplaygames.domain.model.GameDetail
 import com.example.freetoplaygames.domain.model.Games
 import com.example.freetoplaygames.presentation.detail.GameDetailUiData
-import com.example.freetoplaygames.presentation.detail.GameDetailUiMapperImpl
+
 import com.example.freetoplaygames.presentation.home.GameHomeUiMapperImpl
 import com.example.freetoplaygames.presentation.home.GameHomeUiData
 import dagger.Binds
@@ -22,7 +22,7 @@ abstract class MapperModule {
     @ViewModelScoped
     abstract fun bindGamesHomeUiMapper(gameHomeUiMapperImpl: GameHomeUiMapperImpl): GameListMapper<Games,GameHomeUiData>
 
-    @Binds
-    @ViewModelScoped
-    abstract fun bindGameDetailMapper(gameDetailUiMapperImpl: GameDetailUiMapperImpl): GameDetailMapper<GameDetail, GameDetailUiData>
+    //@Binds
+    //@ViewModelScoped
+    //abstract fun bindGameDetailMapper(gameDetailUiMapperImpl: GameDetailUiMapperImpl): GameDetailMapper<GameDetail, GameDetailUiData>
 }

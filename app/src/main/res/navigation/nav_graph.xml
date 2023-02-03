@@ -13,6 +13,10 @@
         <action
             android:id="@+id/action_gamesFragment_to_gameDetailFragment"
             app:destination="@id/gameDetailFragment" />
+        <argument
+            android:name="gameId"
+            app:argType="integer"
+            android:defaultValue="1" />
     </fragment>
     <fragment
         android:id="@+id/gameDetailFragment"
@@ -22,9 +26,6 @@
         <action
             android:id="@+id/action_gameDetailFragment_to_gamesFragment"
             app:destination="@id/gamesFragment" />
-        <argument
-            android:name="id"
-            app:argType="integer"
-            android:defaultValue="0" />
+
     </fragment>
 </navigation>

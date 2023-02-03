@@ -8,6 +8,8 @@ class GameHomeUiMapperImpl @Inject constructor(): GameListMapper<Games, GameHome
     override fun map(input: List<Games>?): List<GameHomeUiData> {
         return input?.map {
             GameHomeUiData(it.title, it.thumbnail)
-        } ?: emptyList()
+        }!!
     }
+
+
 }

@@ -17,8 +17,7 @@ import com.example.freetoplaygames.common.Resource
 import com.example.freetoplaygames.databinding.FragmentGameBinding
 import dagger.hilt.android.AndroidEntryPoint
 import com.example.freetoplaygames.presentation.home.GameFragment
-import com.example.freetoplaygames.utility.observeTextChanges
-import com.example.freetoplaygames.utility.okWith
+
 import kotlinx.coroutines.flow.*
 
 
@@ -59,9 +58,7 @@ class GameFragment : Fragment(), OnHomeClickListener {
 
     }
 
-    private fun getAllGames(){
-        viewModel.getAllGames()
-    }
+
 
     private fun bindViewModel(){
         viewModel.gamesUiState.observe(viewLifecycleOwner){
