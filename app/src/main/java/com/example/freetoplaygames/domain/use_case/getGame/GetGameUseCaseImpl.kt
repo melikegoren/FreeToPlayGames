@@ -12,7 +12,7 @@ import javax.inject.Inject
 class GetGameUseCaseImpl @Inject constructor(
     private val repository: GamesRepository
 ): GetGameUseCase {
-    override fun invoke(id: Int): Flow<Resource<GameDetail>> = flow {
+    override fun invoke(id: String): Flow<Resource<GameDetail>> = flow {
 
         emit(Resource.Loading)
         //val game = repository.getGameById(id)

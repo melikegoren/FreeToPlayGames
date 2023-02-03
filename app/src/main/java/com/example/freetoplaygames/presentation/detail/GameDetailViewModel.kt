@@ -26,7 +26,7 @@ class GameDetailViewModel @Inject constructor(
     val gameDetailUiState: LiveData<DetailUiState> get() = _gameDetailUiState
 
 
-    fun getGameById(id: Int){
+    fun getGameById(id: String){
         viewModelScope.launch {
             getGameUseCase(id).collect{
                 when(it){

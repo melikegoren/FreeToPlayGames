@@ -21,7 +21,7 @@ class RemoteDataSourceImpl @Inject constructor(
             Resource.Error(e.message)
         }
 
-    override suspend fun getGameById(id: Int): Resource<GameDetail> =
+    override suspend fun getGameById(id: String): Resource<GameDetail> =
         try {
             val game = api.getGame(id).toGameDetail()
             Resource.Success(api.getGame(id).toGameDetail())

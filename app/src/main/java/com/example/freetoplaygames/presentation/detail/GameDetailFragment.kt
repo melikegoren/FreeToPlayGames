@@ -51,8 +51,7 @@ class GameDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getGameById(args.gameId)
-
+        initView()
         bindViewModel()
 
     }
@@ -80,6 +79,13 @@ class GameDetailFragment : Fragment() {
         }
 
 
+
+    }
+
+    private fun initView(){
+        val id = args.gameId.toString()
+        bindViewModel()
+        viewModel.getGameById(id)
 
     }
 

@@ -10,7 +10,7 @@ interface GamesRepository {
 
     suspend fun getGames(): Resource<List<Games?>>
 
-    suspend fun getGameById(id: Int): Resource<GameDetail>
+    suspend fun getGameById(id: String): Resource<GameDetail>
 
     suspend fun getGamesInSearch(name: String): Resource<List<Games>>
 }
